@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
-    title = models.CharField(
+    name = models.CharField(
         max_length=100,
         verbose_name="Наименование категории",
         help_text="Введите наименование категории",
@@ -15,14 +15,14 @@ class Category(models.Model):
     )
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
 class Product(models.Model):
-    title = models.CharField(
+    name = models.CharField(
         max_length=100,
         verbose_name="Наименование продукта",
         help_text="Введите наименование продукта",
@@ -46,7 +46,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
         verbose_name = "Продукт"
