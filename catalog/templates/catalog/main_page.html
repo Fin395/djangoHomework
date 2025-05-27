@@ -5,6 +5,21 @@
     <title>Main_page</title>
 </head>
 <body>
-    <h1>Главная страница</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4">Список товаров</h1>
+        <ul class="list-group">
+            {% for product in products %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Наименование товара: {{product.name}}
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Описание товара: {{product.description}}
+                </li>
+                <li>
+                    Изображение товара: <img src='{{ product.photo.url }}' alt='{{ product.name }}'>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
