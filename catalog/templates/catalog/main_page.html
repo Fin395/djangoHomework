@@ -13,7 +13,7 @@
                     Наименование товара: {{product.name}}
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Описание товара: {{product.description}}
+                    Описание товара: {{product.description|truncatechars:100}}
                 </li>
                 <li>
                     Изображение товара: <img src='{{ product.photo.url }}' alt='{{ product.name }}'>
