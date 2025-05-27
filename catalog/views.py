@@ -22,3 +22,8 @@ def single_product(request, pk):
     context = {'product': product}
     return render(request, 'catalog/product.html', context)
 
+
+def main_page(request):
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request, 'catalog/main_page.html', context)
