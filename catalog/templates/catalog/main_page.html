@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main_page</title>
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Список товаров</h1>
-        <ul class="list-group">
-            {% for product in products %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Наименование товара: {{product.name}}
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Описание товара: {{product.description|truncatechars:100}}
-                </li>
-                <li>
-                    Изображение товара: <img src='{{ product.photo.url }}' alt='{{ product.name }}'>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-</body>
-</html>
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Список товаров</h1>
+    <ul class="list-group">
+        {% for product in products %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Наименование товара: {{product.name}}
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Описание товара: {{product.description|truncatechars:100}}
+            </li>
+            <li>
+                Изображение товара: <img src='{{ product.photo.url }}' alt='{{ product.name }}'>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Product_info</title>
-</head>
-<body>
+{% extends 'catalog/base.html' %}
+
+{% block content %}
     <h1>Информация о товаре</h1>
     <p>Наименование товара: {{product.name}}</p>
     <p>Описание товара: {{product.description}}</p>
@@ -13,5 +9,4 @@
     <p>Цена товара: {{product.price}}</p>
     <p>Дата создания товара: {{product.created_at}}</p>
     <p>Дата последнего изменения: {{product.updated_at}}</p>
-</body>
-</html>
+{% endblock %}
