@@ -1,9 +1,8 @@
 {% extends 'catalog/base.html' %}
-
 {% block content %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Finstore</h1>
-    <p class="lead">Finstore - онлайн магазин товаров по доступным ценам</p>
+    <h1 class="display-4">FinStore</h1>
+    <p class="lead">FinStore - онлайн магазин товаров по доступным ценам</p>
         <p class="lead">Наши товары:</p>
 
 </div>
@@ -12,10 +11,11 @@
 {% for product in products %}
 
         <div class="card">
-            <img src='{{ product.photo.url }}' alt='{{ product.name }}'>
+            <img src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.name }}">
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
                 <p class="card-text">{{product.description|truncatechars:100}}</p>
+                <a class="p-2 btn btn-primary" href="http://127.0.0.1:8000/catalog/single_product/<int:pk>/">Посмотреть товар</a>
 
             </div>
         </div>
