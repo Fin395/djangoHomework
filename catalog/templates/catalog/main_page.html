@@ -9,16 +9,14 @@
 <div class="container">
 <div class="card-group">
 {% for product in products %}
-
-        <div class="card">
-            <img src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.name }}">
-            <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
-                <p class="card-text">{{product.description|truncatechars:100}}</p>
-                <a class="p-2 btn btn-primary" href="{% url 'catalog:single_product' product.pk %}">Посмотреть товар</a>
-
-            </div>
+    <div class="card text-center">
+        <img src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.name }}">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description|truncatechars:100}}</p>
+            <a class="p-2 btn btn-primary" href="{% url 'catalog:single_product' product.pk %}">Посмотреть товар</a>
         </div>
+    </div>
 {% endfor %}
 
 </div>
