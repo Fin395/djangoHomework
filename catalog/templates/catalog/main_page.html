@@ -15,7 +15,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
                 <p class="card-text">{{product.description|truncatechars:100}}</p>
-                <a class="p-2 btn btn-primary" href="http://127.0.0.1:8000/catalog/single_product/<int:pk>/">Посмотреть товар</a>
+                <a class="p-2 btn btn-primary" href="{% url 'catalog:single_product' product.pk %}">Посмотреть товар</a>
 
             </div>
         </div>
