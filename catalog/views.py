@@ -23,3 +23,17 @@ def main_page(request):
     products = Product.objects.all()
     context = {'products': products}
     return render(request, 'catalog/main_page.html', context)
+
+
+def create_product(request):
+    if request.method == 'POST':
+        name = request.POST.get('Наименование продукта')
+        description = request.POST.get('Описание продукта')
+        image = request.POST.get('Изображение продукта')
+        category = request.POST.get('Категория продукта')
+        price = request.POST.get('Цена продукта')
+         = request.POST.get('Дата создания продукта')
+        updated_at = request.POST.get('Дата последнего изменения')
+        Product.objects.create(name=name, description=description, category=category, price=price)
+        return HttpResponse("Спасибо! Товар успешно создан!")
+    return render(request, 'catalog/create_product.html')
