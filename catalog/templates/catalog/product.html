@@ -1,12 +1,25 @@
 {% extends 'catalog/base.html' %}
 
 {% block content %}
-    <h1>Информация о товаре</h1>
-    <p>Наименование товара: {{product.name}}</p>
-    <p>Описание товара: {{product.description}}</p>
-    <p>Изображение товара: <img src='{{ product.photo.url }}' alt='{{ product.name }}'></p>
-    <p>Категория товара: {{product.category}}</p>
-    <p>Цена товара: {{product.price}}</p>
-    <p>Дата создания товара: {{product.created_at}}</p>
-    <p>Дата последнего изменения: {{product.updated_at}}</p>
+<div class="row text-center">
+    <div class="col-3">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Фото</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                    <li>- Наименование товара: {{product.name}}</li>
+                    <li>- Описание товара: {{product.description}}</li>
+                    <li>- Изображение товара: <img src='{{ product.photo.url }}' alt='{{ product.name }}'></li>
+                    <li>- Категория товара: {{product.category}}</li>
+                    <li>- Цена товара: {{product.price}}</li>
+                    <li>- Дата создания товара: {{product.created_at}}</li>
+                    <li>- Дата последнего изменения: {{product.updated_at}}</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
