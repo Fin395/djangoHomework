@@ -1,0 +1,27 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="card mb-3 text-center" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+      </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Категория товара: {{product.category}}</li>
+      <li class="list-group-item">Цена товара: {{product.price}}</li>
+      <li class="list-group-item">Дата создания товара: {{product.created_at}}</li>
+      <li class="list-group-item">Дата последнего изменения: {{product.updated_at}}</li>
+    </ul>
+  <div class="card-body">
+    <a href="#" class="btn btn-success">Добавить в корзину</a>
+    <a href="{% url 'catalog:main_page' %}" class="btn btn-primary">На главную</a>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}
