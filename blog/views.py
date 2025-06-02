@@ -7,3 +7,7 @@ class BlogView(TemplateView):
 
 class BlogContactsView(TemplateView):
     template_name = 'blog/contacts.html'
+
+
+class ArticleView(TemplateView):
+    template_name = 'blog/blog_list.html'
