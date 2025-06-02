@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class BlogView(TemplateView):
+    template_name = 'blog/main_page.html'
+
+
+class BlogContactsView(TemplateView):
+    template_name = 'blog/contacts.html'
