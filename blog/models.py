@@ -1,6 +1,6 @@
 from django.db import models
 
-class MyBlog(models.Model):
+class Article(models.Model):
     title = models.CharField(
         max_length=100,
         verbose_name="Заголовок",
@@ -28,5 +28,5 @@ class MyBlog(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "Блог"
-        verbose_name_plural = "Блоги"
+        verbose_name = "Статья"
+        verbose_name_plural = "Статьи"
