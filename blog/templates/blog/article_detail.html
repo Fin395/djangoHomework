@@ -11,6 +11,9 @@
     <p>{{object.content}}</p>
     <p class="card-text"><small class="text-body-secondary">Количество просмотров: {{object.views}}</small></p>
     <a class="p-2 btn btn-outline-primary" href="{% url 'blog:articles' %}">Вернуться к списку статей</a>
+    <a class="p-2 btn btn-outline-primary" href="{% url 'blog:edit' object.pk %}">Редактировать</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'blog:delete' object.pk %}">Удалить</a>
+
   </div>
 </div>
 {% endblock %}
