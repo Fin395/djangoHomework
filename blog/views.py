@@ -1,4 +1,6 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
+
+from blog.models import Article
 
 
 class BlogView(TemplateView):
@@ -9,5 +11,5 @@ class BlogContactsView(TemplateView):
     template_name = 'blog/contacts.html'
 
 
-class ArticleView(TemplateView):
-    template_name = 'blog/blog_list.html'
+class ArticleDetailView(DetailView):
+    model = Article
