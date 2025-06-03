@@ -7,7 +7,9 @@
 <div class="card-body">
     <h5 class="card-title">Добро пожаловать в мой блог.</h5>
     <p class="card-text">Он пока не доработан, но мы это исправим.</p>
-    <a href="#" class="btn btn-primary">Мои статьи</a>
+    <a href="{% url 'blog:articles' %}" class="btn btn-primary">Мои статьи</a>
+    <a href="{% url 'blog:new' %}" class="btn btn-primary">Создать новую статью</a>
+
 </div>
   </div>
 

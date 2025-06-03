@@ -21,7 +21,7 @@ class Article(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     is_published = models.BooleanField(default=True)
-    views = models.IntegerField()
+    views = models.IntegerField(default=0)
 
 
     def __str__(self):
