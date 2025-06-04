@@ -10,9 +10,9 @@
     <h5 class="mt-0">{{object.title}}</h5>
     <p>{{object.content}}</p>
     <p class="card-text"><small class="text-body-secondary">Количество просмотров: {{object.views}}</small></p>
-    <a class="p-2 btn btn-outline-primary" href="{% url 'blog:articles' %}">Вернуться к списку статей</a>
-    <a class="p-2 btn btn-outline-primary" href="{% url 'blog:edit' object.pk %}">Редактировать</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'blog:delete' object.pk %}">Удалить</a>
+    <a class="p-2 btn btn-outline-primary" href="{% url 'blog:article_list' %}">Вернуться к списку статей</a>
+    <a class="p-2 btn btn-outline-primary" href="{% url 'blog:article_update' object.pk %}">Редактировать</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'blog:article_delete' object.pk %}">Удалить</a>
 
   </div>
 </div>
