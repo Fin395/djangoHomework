@@ -4,10 +4,10 @@
 
 {% block content %}
 <h2>{{ view.title }}</h2>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Сохранить</button>
-    <a href="{% url 'catalog:main_page' %}" class="btn btn-secondary">Отмена</a>
+    <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
 </form>
 {% endblock %}
