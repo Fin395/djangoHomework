@@ -9,7 +9,6 @@ class Command(BaseCommand):
         User = get_user_model()
         user = User.objects.create(email='admindjangohomework@sky.pro')
         user.set_password(os.getenv('ADMIN_PASSWORD'))
-        user.set_password('1qaz')
         user.is_active = True
         user.is_staff = True
         user.is_superuser = True
