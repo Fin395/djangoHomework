@@ -25,11 +25,9 @@ class Product(models.Model):
     name = models.CharField(
         max_length=100,
         verbose_name="Наименование продукта",
-        help_text="Введите наименование продукта",
     )
     description = models.TextField(
         verbose_name="Описание продукта",
-        help_text="Введите описание продукта",
         blank=True,
         null=True,
     )
@@ -38,7 +36,6 @@ class Product(models.Model):
         blank=True,
         null=True,
         verbose_name="Изображение продукта",
-        help_text="Загрузите изображение продукта",
     )
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     price = models.FloatField()

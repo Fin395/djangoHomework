@@ -8,18 +8,20 @@
 </div>
 <div class="container">
 <div class="card-group">
-{% for product in object_list %}
+{% for object in object_list %}
     <div class="card text-center">
-        <img src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.name }}">
+        <img src="{{ MEDIA_URL }}{{ object.image.url }}" alt="{{ object.name }}">
         <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description|truncatechars:100}}</p>
-            <a class="p-2 btn btn-primary" href="{% url 'catalog:single_product' product.pk %}">Посмотреть товар</a>
+            <h5 class="card-title">{{object.name}}</h5>
+            <p class="card-text">{{object.description|truncatechars:100}}</p>
+            <a class="p-2 btn btn-primary" href="{% url 'catalog:product_detail' object.pk %}">Посмотреть товар</a>
         </div>
     </div>
 {% endfor %}
-
 </div>
+    <div class="d-grid gap-2">
+        <a href="{% url 'catalog:product_create' %}" class="btn btn-primary">Добавить продукт</a>
+    </div>
 </div>
 {% endblock %}
 
