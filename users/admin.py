@@ -5,3 +5,4 @@ from .models import CustomUser
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('id', 'email')
+    exclude = ['password']
