@@ -12,6 +12,11 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
         model = Product
         fields = ['name', 'description', 'image', 'category', 'price']
 
+class ProductModeratorForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['is_published']
+
     # def __init__(self, *args, **kwargs):
     #     super(ProductForm, self).__init__(*args, **kwargs)
     #
