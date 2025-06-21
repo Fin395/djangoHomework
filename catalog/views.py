@@ -27,6 +27,8 @@ class ProductsListView(ListView):
     model = Product
 
     def get_queryset(self):
+        if self.request.user.has_perm('catalog.can_unpublish_product'):
+            return Product.objects.all()
         return Product.objects.filter(is_published=True)
 
 
@@ -49,7 +51,6 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         if user.has_perm('catalog.can_unpublish_product'):
             return ProductModeratorForm
         return ProductForm
-
 
 
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
