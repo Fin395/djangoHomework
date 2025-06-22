@@ -12,11 +12,13 @@
     <p class="card-text"><small class="text-body-secondary">Цена товара: {{object.price}}</small></p>
     <p class="card-text"><small class="text-body-secondary">Дата создания товара: {{object.created_at}}</small></p>
     <p class="card-text"><small class="text-body-secondary">Дата последнего изменения: {{object.updated_at}}</small></p>
-    <a href="#" class="btn btn-success">Добавить в корзину</a>
-    <a href="{% url 'catalog:product_list' %}" class="btn btn-primary">На главную</a>
-    <a href="{% url 'catalog:product_update' object.pk %}" class="btn btn-primary">Редактировать</a>
-    <a href="{% url 'catalog:product_delete' object.pk %}" class="btn btn-primary">Удалить</a>
-
+    {% if object.owner == user or perms.catalog.can_unpublish_product and perms.catalog.delete_product %}
+        <a href="{% url 'catalog:product_update' object.pk %}" class="btn btn-primary">Редактировать</a>
+        <a href="{% url 'catalog:product_delete' object.pk %}" class="btn btn-primary">Удалить</a>
+    {% else %}
+        <a href="#" class="btn btn-success">Добавить в корзину</a>
+        <a href="{% url 'catalog:product_list' %}" class="btn btn-primary">На главную</a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
