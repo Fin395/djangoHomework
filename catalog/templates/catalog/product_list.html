@@ -21,7 +21,7 @@
     </div>
 {% endfor %}
 </div>
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and not perms.catalog.can_unpublish_product and not perms.catalog.delete_product %}
     <div class="d-grid gap-2">
         <a href="{% url 'catalog:product_create' %}" class="btn btn-primary">Добавить продукт</a>
     </div>

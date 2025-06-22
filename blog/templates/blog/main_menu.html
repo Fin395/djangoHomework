@@ -9,7 +9,7 @@
             <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit" class="p-2 btn btn-outline-primary">Выйти</button>
-                <span class="navbar-text">Добро пожаловать в наш магазин!</span>
+                <span class="navbar-text">Добро пожаловать в наш магазин, {{ user }}!</span>
             </form>
         {% else %}
             <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Войти</a>
