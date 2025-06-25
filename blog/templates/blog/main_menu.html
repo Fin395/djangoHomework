@@ -1,20 +1,43 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">FinStore</h5>
-    <nav class="ms-5">
-        <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_list' %}">Продукты</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'blog:article_main' %}">Блог</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'blog:article_contacts' %}">Контакты</a>
-
-        {% if user.is_authenticated %}
-            <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit" class="p-2 btn btn-outline-primary">Выйти</button>
-                <span class="navbar-text">Добро пожаловать в наш магазин, {{ user }}!</span>
-            </form>
-        {% else %}
-            <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Войти</a>
-            <a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Зарегистрироваться</a>
-            <span class="navbar-text">Для просмотра товаров необходимо авторизоваться!</span>
-        {% endif %}
-    </nav>
+    <a class="btn btn-primary mt-3" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    FinStore
+    </a>
+    {% if user.is_authenticated %}
+        <div class="d-flex">
+            <div class="p-2 flex-fill mt-3">Добро пожаловать в наш магазин, {{ user }}!</div>
+        </div>
+    {% else %}
+        <div class="d-flex">
+            <div class="p-2 flex-fill mt-3">Для просмотра товаров необходимо авторизоваться!</div>
+        </div>
+    {% endif %}
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Выберите необходимое действие в главном меню</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Главное меню
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'catalog:product_list' %}">Продукты</a></li>
+                    <li><a class="dropdown-item" href="{% url 'blog:article_main' %}">Блог</a></li>
+                    <li><a class="dropdown-item" href="{% url 'blog:article_contacts' %}">Контакты</a></li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                                <button type="submit" class="dropdown-item">Выйти</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a class="dropdown-item" href="{% url 'users:login' %}">Войти</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:register' %}">Зарегистрироваться</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
