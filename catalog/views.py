@@ -6,6 +6,8 @@ from .forms import ProductForm, ProductModeratorForm
 from .models import Product, Category
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
+from django.core.cache import cache
+
 
 
 from .services import ProductService
@@ -86,12 +88,10 @@ class ProductsByCategoryListView(ListView):
 
     def get_queryset(self):
         category_id = self.kwargs.get('pk')
-        return ProductService.get_products_by_category(category_id)
+        return ProductService.get_products_by_category_cached(category_id)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category'] = get_object_or_404(Category, id=self.kwargs.get('pk'))
         # context['categories'] = Category.objects.all()
         return context
-
-
