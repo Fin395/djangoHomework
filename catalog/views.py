@@ -3,8 +3,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .forms import ProductForm, ProductModeratorForm
-from .models import Product
+from .models import Product, Category
 from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
+from django.core.cache import cache
+
+
+
+from .services import ProductService
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -74,3 +80,18 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
 
 class ContactsView(TemplateView):
     template_name = 'catalog/contacts.html'
+
+
+class ProductsByCategoryListView(ListView):
+    model = Product
+    template_name = 'catalog/products_by_category_list.html'
+
+    def get_queryset(self):
+        category_id = self.kwargs.get('pk')
+        return ProductService.get_products_by_category_cached(category_id)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category'] = get_object_or_404(Category, id=self.kwargs.get('pk'))
+        # context['categories'] = Category.objects.all()
+        return context
