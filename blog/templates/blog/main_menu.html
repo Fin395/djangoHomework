@@ -38,17 +38,18 @@
                     {% endif %}
                 </ul>
             </div>
+            {% if categories %}
             <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                 Категории товаров
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'catalog:products_by_category_list' 4 %}">Бытовая техника</a></li>
-                    <li><a class="dropdown-item" href="{% url 'catalog:products_by_category_list' 6 %}">Спорттовары</a></li>
-                    <li><a class="dropdown-item" href="{% url 'catalog:products_by_category_list' 5 %}">Смартфоны</a></li>
+                    {% for cat in categories %}
+                    <li><a class="dropdown-item" href="{% url 'catalog:products_by_category_list' cat.id %}">{{ cat }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
-
+            {% endif %}
         </div>
     </div>
 </div>

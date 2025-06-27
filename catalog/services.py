@@ -23,5 +23,5 @@ class ProductService:
         queryset = cache.get('products_by_category')
         if not queryset:
                 queryset = ProductService.get_products_by_category(category_id)
-                cache.set('products_by_category', queryset, 60 * 2)
+                cache.set('products_by_category', queryset, 10)
         return queryset
