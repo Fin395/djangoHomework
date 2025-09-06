@@ -36,6 +36,11 @@ class ProductsListView(ListView):
             return Product.objects.all()
         return Product.objects.filter(is_published=True)
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['categories'] = Category.objects.all()
+        return context
+
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
@@ -93,5 +98,5 @@ class ProductsByCategoryListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category'] = get_object_or_404(Category, id=self.kwargs.get('pk'))
-        # context['categories'] = Category.objects.all()
+        context['categories'] = Category.objects.all()
         return context
